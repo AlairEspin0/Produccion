@@ -9,11 +9,11 @@ function ReadMap($enc)
 {
 	//Read a map file
 	$file=dirname(__FILE__).'/'.strtolower($enc).'.map';
-	$a=file($file);
-	if(empty($a))
+	$bss=file($file);
+	if(empty($bss))
 		die('<B>Error:</B> encoding not found: '.$enc);
 	$cc2gn=array();
-	foreach($a as $l)
+	foreach($bss as $l)
 	{
 		if($l{0}=='!')
 		{
@@ -34,8 +34,8 @@ function ReadMap($enc)
 function ReadAFM($file,&$map)
 {
 	//Read a font metric file
-	$a=file($file);
-	if(empty($a))
+	$bss=file($file);
+	if(empty($bss))
 		die('File not found');
 	$widths=array();
 	$fm=array();
@@ -47,7 +47,7 @@ function ReadAFM($file,&$map)
 		'Tcedilla'=>'Tcommaaccent','tcedilla'=>'tcommaaccent','Dslash'=>'Dcroat','dslash'=>'dcroat','Dmacron'=>'Dcroat','dmacron'=>'dcroat',
 		'combininggraveaccent'=>'gravecomb','combininghookabove'=>'hookabovecomb','combiningtildeaccent'=>'tildecomb',
 		'combiningacuteaccent'=>'acutecomb','combiningdotbelow'=>'dotbelowcomb','dongsign'=>'dong');
-	foreach($a as $l)
+	foreach($bss as $l)
 	{
 		$e=explode(' ',rtrim($l));
 		if(count($e)<2)
@@ -238,14 +238,14 @@ function SaveToFile($file,$s,$mode='t')
 
 function ReadShort($f)
 {
-	$a=unpack('n1n',fread($f,2));
-	return $a['n'];
+	$bss=unpack('n1n',fread($f,2));
+	return $bss['n'];
 }
 
 function ReadLong($f)
 {
-	$a=unpack('N1N',fread($f,4));
-	return $a['N'];
+	$bss=unpack('N1N',fread($f,4));
+	return $bss['N'];
 }
 
 function CheckTTF($file)
@@ -289,9 +289,9 @@ function CheckTTF($file)
 }
 
 /*******************************************************************************
-* $fontfile : chemin du fichier TTF (ou chaîne vide si pas d'incorporation)    *
+* $fontfile : chemin du fichier TTF (ou chaÃ®ne vide si pas d'incorporation)    *
 * $afmfile :  chemin du fichier AFM                                            *
-* $enc :      encodage (ou chaîne vide si la police est symbolique)            *
+* $enc :      encodage (ou chaÃ®ne vide si la police est symbolique)            *
 * $patch :    patch optionnel pour l'encodage                                  *
 * $type :     type de la police si $fontfile est vide                          *
 *******************************************************************************/
